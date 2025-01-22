@@ -9,9 +9,11 @@ class Libxmlsec1AT1241 < Formula
   depends_on "libtool"
 
   def install
+    openssl = Formula["openssl@3"]
     system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
-                          "--prefix=#{prefix}"
+                          "--prefix=#{prefix}",
+                          "--with-openssl=#{openssl.opt_prefix}"
     system "make", "install"
   end
 
